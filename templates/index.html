@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            position: relative;
+            max-width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-de-fundo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .frase {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            color: #ffffff;
+            border-radius: 5px;
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .frase h1 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        .frase form {
+            margin-top: 20px;
+        }
+
+        .frase input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .frase p {
+            margin-top: 10px;
+        }
+    </style>
+    <title>Minha Página Inicial</title>
+</head>
+<body>
+    <div class="container">
+        <img src="/static/imagens/foto1.jpeg" alt="imagem login" class="imagem-de-fundo">
+        <div class="frase">
+            <h1>Bem-vindo à Minha Página Inicial</h1>
+            <form action="/cadastro" method="get">
+                <input type="submit" value="Criar Login">
+            </form>
+            <p>Já tem uma conta? <a href="/login">Faça login</a></p>
+        </div>
+    </div>
+</body>
+</html>

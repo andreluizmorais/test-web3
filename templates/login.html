@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Login</title>
+    <style>
+        /* Estilo para o contêiner geral */
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Defina a altura como 100% da altura da visualização (viewport height) */
+            display: flex;
+            justify-content: center; /* Centralize horizontalmente */
+            align-items: center; /* Centralize verticalmente */
+        }
+
+        /* Estilo para a imagem de fundo */
+        .imagem-de-fundo {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* Estilo para a div de login */
+        .frase {
+            position: absolute;
+            background-color: rgba(57, 29, 29, 0.5);
+            padding: 20px;
+            color: #fffdfd;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        /* Estilo para o formulário dentro da div de login */
+        .frase form {
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="/static/imagens/foto2.jpeg" alt="imagem login" class="imagem-de-fundo">
+        <div class="frase">
+            <h1>Login</h1>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+            <form action="/login" method="post">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required><br>
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" required><br>
+                <input type="submit" value="Entrar">
+            </form>
+            <p>Não tem uma conta? <a href="/cadastro">Crie uma conta</a></p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+</body>
+
+</html>

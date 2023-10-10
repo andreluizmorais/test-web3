@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <style>
+      .container {
+        position: auto;
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .imagem-de-fundo {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        object-fit: cover;
+      }
+
+      .formulario-cadastro {
+        position: relative;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        border-radius: 10px;
+        color: #ffffff;
+      }
+
+      .formulario-cadastro h1 {
+        text-align: center;
+      }
+
+      .formulario-cadastro label,
+      .formulario-cadastro input {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .formulario-cadastro input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ffffff;
+        border-radius: 5px;
+      }
+
+      .formulario-cadastro input[type="submit"] {
+        background-color: #007bff;
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+    <title>Cadastro de Cliente</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <img
+        src="/static/imagens/foto2.jpeg"
+        alt="imagem cadastro"
+        class="imagem-de-fundo"
+      />
+
+      <div class="formulario-cadastro">
+        <h1>Cadastro de Cliente</h1>
+        {% if erros %}
+          {% for erro in erros %}
+            <div>
+                {{ erro }}
+            </div>
+          {% endfor %}
+        {% endif %}
+        <form action="/cadastro" method="post">
+          <label for="nome">Nome Completo:</label>
+          <input type="text" id="nome" name="nome" required />
+
+          <label for="cpf">CPF:</label>
+          <input type="text" id="cpf" name="cpf" required />
+
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="telefone">Telefone:</label>
+          <input type="tel" id="telefone" name="telefone" required />
+
+          <label for="endereco">Endereço:</label>
+          <input type="text" id="endereco" name="endereco" required />
+
+          <label for="senha">Senha:</label>
+          <input type="password" id="senha" name="senha" required />
+
+          <label for="confirm_senha">Confirmar Senha:</label>
+          <input
+            type="password"
+            id="confirm_senha"
+            name="confirm_senha"
+            required
+          />
+
+          <input type="submit" value="Cadastrar" />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
